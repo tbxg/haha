@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head th:replace="common/client_layout :: cssClient">
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<header th:replace="common/client_layout :: headerClient"></header>
+	<br>
+	<br>
+	
+	<p th:text="${currentElec}"></p>
+	<div class="about-bottom" style="padding-bottom: 0px;">
+		<div class="container">
+			<div class="about-bottom-grids">
+				<div class="col-md-8 about-bottom-grid-right">
+					<h3>Welcome To Current Elections !</h3>
+					<p class="nihil">Vote For Real Government.</p>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="about">
+		<div class="container">
+
+			<c:forEach items="${currentElec}" var="item" varStatus="loop">
+				<c:if test="${loop.index%2==0}">
+					<hr>
+					<div class="about-grds">
+						<div class="col-md-6 about-grd">
+							<div class="about-grd-main">
+								<a class="link" href="Detail?id=${item.getId() }"></a>
+								<img src="/client/images/6.jpg" alt=" "
+									class="img-responsive">
+							</div>
+						</div>
+						<div class="col-md-6 about-grd">
+							<h3>${item.getTitle()} !</h3>
+							<p class="nihil">Date created: ${item.getCreateDate() }</p>
+							<p class="leap">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+								Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+								when an unknown printer took a galley of type and scrambled it to make a type
+								specimen book. It has survived not only five centuries, but also the leap
+								into electronic typesetting, remaining essentially unchanged. It was
+								popularised in the 1960s with the release of Letraset sheets containing
+								Lorem Ipsum passages, and more recently with desktop publishing software
+								like Aldus PageMaker including versions of Lorem Ipsum.</p>
+							<div class="more">
+								<a href="Detail?id=${item.getId() }" class="type-1">
+									<span> More Info... </span>
+									<span> More Info... </span>
+								</a>
+							</div>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</c:if>
+
+				<c:if test="${loop.index%2!=0 }">
+					<hr>
+					<div class="about-grds">
+						<div class="col-md-6 about-grd">
+							<h3>${item.getTitle()} !</h3>
+							<p class="nihil">Date created: ${item.getCreateDate() }</p>
+							<p class="leap">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+								Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+								when an unknown printer took a galley of type and scrambled it to make a type
+								specimen book. It has survived not only five centuries, but also the leap
+								into electronic typesetting, remaining essentially unchanged. It was
+								popularised in the 1960s with the release of Letraset sheets containing
+								Lorem Ipsum passages, and more recently with desktop publishing software
+								like Aldus PageMaker including versions of Lorem Ipsum.</p>
+							<div class="more">
+								<a href="Detail?id=${item.getId() }" class="type-1">
+									<span> More Info... </span>
+									<span> More Info... </span>
+								</a>
+							</div>
+						</div>
+						<div class="col-md-6 about-grd">
+							<div class="about-grd-main">
+								<a class="link" href="Detail?id=${item.getId() }"></a>
+								<img src="/client/images/6.jpg" alt=" "
+									class="img-responsive">
+							</div>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</c:if>
+			</c:forEach>
+
+		</div>
+	</div>
+
+
+
+	<footer th:replace="common/client_layout :: footerClient"></footer>
+	<script>
+		var a = ${currentElec}
+	</script>
+</body>
+
+</html>
